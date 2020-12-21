@@ -1,4 +1,36 @@
+sealed trait Token {}
+
+case class Number(num: Long) extends Token {
+ // def this(str: String) = this(str.toInt)
+  def *(n: Number) = Number(num*n.num)
+  def +(n: Number) = Number(num+n.num)
+  override def toString: String = num.toString
+}
+
+sealed trait Op extends Token {}
+
+case class Add() extends Op {
+  override def toString: String = "+"
+}
+
+case class Multiply() extends Op {
+  override def toString: String = "*"
+}
+
+case class OpenParen() extends Token {
+  override def toString: String = "["
+}
+
+case class CloseParen() extends Token {
+  override def toString: String = "]"
+}
+
+case class Start() extends Op {
+  override def toString: String = "START"
+}
+
 object AdventOfCode18 {
+  
   val digit = "[0-9]".r
   val ws = "\\s".r
 
