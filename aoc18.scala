@@ -65,13 +65,7 @@
           }
         }
 
-        val finished =
-          if (curr.nonEmpty)
-            endToken(tokens, curr)._1
-          else
-            tokens
-
-        finished.reverse
+        endToken(tokens, curr)._1.reverse
       }
 
       def evaluate(tokens: Seq[Token]): Long = {
